@@ -5,6 +5,8 @@ import { DatabaseModule } from './database/database.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { UsersModule } from './modules/users/users.module';
 import {ConfigModule} from '@nestjs/config'
+import { PasswordService } from './common/password/password.service';
+import { PasswordModule } from './common/password/password.module';
 
 @Module({
   imports: [
@@ -12,8 +14,9 @@ import {ConfigModule} from '@nestjs/config'
     DatabaseModule,
     AuthModule,
     UsersModule,
+    PasswordModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, PasswordService],
 })
 export class AppModule {}
