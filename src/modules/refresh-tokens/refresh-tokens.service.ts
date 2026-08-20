@@ -30,7 +30,7 @@ export class RefreshTokensService {
     });
   }
 
-  async findByToken(hashedRefreshToken) {
+  async findByToken(hashedRefreshToken: string) {
     return this.prisma.refreshToken.findUnique({
       where: {
         tokenHash: hashedRefreshToken,
