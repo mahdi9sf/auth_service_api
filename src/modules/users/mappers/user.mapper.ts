@@ -1,7 +1,8 @@
 import { User } from '@prisma/client';
+import { UserResponse } from '../types/user-response.type';
 
 export class UserMapper {
-  static toResponse(user: User) {
+  static toResponse(user: User): UserResponse {
     return {
       id: user.id,
       email: user.email,

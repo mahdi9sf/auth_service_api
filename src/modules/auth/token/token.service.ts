@@ -1,6 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 
+type JwtPayload = {
+  sub: string;
+  iat?: number;
+  exp?: number;
+};
+
 @Injectable()
 export class TokenService {
   constructor(private readonly jwtService: JwtService) {}
@@ -31,7 +37,7 @@ export class TokenService {
   }
 
   async verifyRefreshToken(token: string) {
-    return this.jwtService.verifyAsync(token, {
+    return this.jwtService.verifyAsync<JwtPayload>(token, {
       secret: process.env.JWT_REFRESH_SECRET,
     });
   }

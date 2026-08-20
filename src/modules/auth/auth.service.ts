@@ -93,7 +93,7 @@ export class AuthService {
 
     return this.buildAuthResponse(
       'User successfully logged in',
-      UserMapper.toResponse(user),
+      user,
       accessToken,
       refreshToken,
     );
